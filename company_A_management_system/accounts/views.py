@@ -37,13 +37,17 @@ def SigningUpCompanyRepresentativesView(request):
             print("Looks good mate")
             verifying_signup.save()
             current_user = User.objects.get(email=request.POST['company_email'])
-            current_user.is_active = False
+            current_user.username = str(request.POST['first_name']+"_"+request.POST['last_name'])
             current_user.save()
+            print("This is : ", current_user.first_name)
+            # current_user.is_active = False
+            # current_user.save()
             model = ProfileModel(
                 first_name=request.POST['first_name'],
                 last_name=request.POST['last_name'],
                 company_email = request.POST['company_email'],
-                company_role = request.POST['company_role']
+                company_role = request.POST['company_role'],
+                user = current_user
             )
             model.save()
         else:
@@ -60,7 +64,11 @@ def LoggingInCompanyRepresentativesView(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = authenticate(request, email=email, password=password)
+        print(email)
+        current_user = User.objects.get(email=email)
+        current_user_username=current_user.username
+
+        user = authenticate(request, username=current_user_username, password=password)
 
         if user is not None:
             login(request, user)

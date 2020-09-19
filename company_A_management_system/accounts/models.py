@@ -8,4 +8,8 @@ class ProfileModel(models.Model):
     last_name = models.CharField(max_length=100)
     company_email = models.CharField(max_length=250)
     company_role = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.first_name + " " + self.last_name)
+

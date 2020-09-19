@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     #Local Apps
     'accounts.apps.AccountsConfig',
     'company_A_app.apps.CompanyAAppConfig',
-    'home.apps.HomeConfig'
+    'home.apps.HomeConfig',
+    'vendor_app.apps.VendorAppConfig',
+    'procurement_app.apps.ProcurementAppConfig'
 ]
 
 MIDDLEWARE = [
@@ -110,6 +112,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    # 'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_EMAIL_REQUIRED = True
