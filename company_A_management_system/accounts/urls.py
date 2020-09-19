@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 from accounts.views import (
 
-    SigningUpCompanyRepresentatives
+    SigningUpCompanyRepresentativesView,
+    LoggingInCompanyRepresentativesView
 
 
 )
@@ -14,6 +15,7 @@ app_name = 'accounts'
 
 urlpatterns = [
 
-    path('Company-Representative-Sign-Up/', SigningUpCompanyRepresentatives, name='signing_up')
+    path('Company-Representative-Sign-Up/', SigningUpCompanyRepresentativesView, name='signing_up'),
+    path('Company-Representative-Log-In/', LoggingInCompanyRepresentativesView, name='logging_in'),
 
 ]
