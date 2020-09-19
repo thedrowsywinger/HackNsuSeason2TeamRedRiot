@@ -1,0 +1,2 @@
+# HackNsuSeason2TeamRedRiot
+HackNsuSeason2
