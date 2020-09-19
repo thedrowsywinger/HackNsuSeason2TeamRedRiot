@@ -76,4 +76,4 @@ def LogoutView(request):
 
 	logout(request)
     
-	return HttpResponse("Would you like to log in again?")
+	return redirect('home:home')

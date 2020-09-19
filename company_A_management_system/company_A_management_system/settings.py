@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'allauth.account',
 
     #Local Apps
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'company_A_app.apps.CompanyAAppConfig',
+    'home.apps.HomeConfig'
 ]
 
 MIDDLEWARE = [
@@ -119,9 +121,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 SITE_ID = 1
 
-# LOGIN_REDIRECT_URL = ''
-# ACCOUNT_LOGOUT_REDIRECT_URL = ''
-# LOGOUT_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'home:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home:home'
+LOGOUT_REDIRECT_URL = 'home:home'
 
 
 # Internationalization
