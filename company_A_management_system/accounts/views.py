@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+from django.contrib.auth.models import User
+
+
+def SigningUpCompanyRepresentatives(request):
+
+    return render(request, "accounts/signup.html")
