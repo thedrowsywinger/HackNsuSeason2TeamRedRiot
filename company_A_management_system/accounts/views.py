@@ -42,7 +42,7 @@ def SigningUpCompanyRepresentativesView(request):
             model = ProfileModel(
                 first_name=request.POST['first_name'],
                 last_name=request.POST['last_name'],
-                company_email = request.POST['company_email']
+                company_email = request.POST['company_email'],
                 company_role = request.POST['company_role']
             )
             model.save()
@@ -58,16 +58,16 @@ def LoggingInCompanyRepresentativesView(request):
     if 'logging_in' in request.POST:
 
         email = request.POST.get('email')
-		password = request.POST.get('password')
+        password = request.POST.get('password')
 
-		user = authenticate(request, email=email, password=password)
+        user = authenticate(request, email=email, password=password)
 
         if user is not None:
-			login(request, user)
-			return HttpResponse("You have been logged in")
-		else:
-			print("No user found")
-			return HttpResponse("You are still not a verified user of this system")
+            login(request, user)
+            return HttpResponse("You have been logged in")
+        else:
+            print("No user found")
+            return HttpResponse("You are still not a verified user of this system")
 
     return render(request, "accounts/login.html")
 
