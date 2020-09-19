@@ -35,6 +35,9 @@
 	border-radius:290px;
 	text-align:center;
 	box-shadow: -3px 5px 10px #999;
+	animation-name: anim3;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
 
 }
 .circle4{
@@ -48,7 +51,23 @@
 	border-radius:290px;
 	text-align:center;
 	box-shadow: -3px 5px 10px #999;
+	animation-name: anim4;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
 
+}
+@keyframes anim4 {
+  0% {background-color:lightblue; left:30%; bottom:20%;}
+  50% {background-color:lightblue; left:30%; bottom:22%;}
+  /* %  {background-color:grey; left:30%; bottom:24%;} */
+  100%  {background-color:lightblue; left:30%; bottom:20%;}
+}
+
+@keyframes anim3 {
+  0% {left:50%; bottom:20%;}
+  50% {left:50%; bottom:22%;}
+  /* %  {background-color:grey; left:30%; bottom:24%;} */
+  100%  {left:50%; bottom:20%;}
 }
 
 .container{
