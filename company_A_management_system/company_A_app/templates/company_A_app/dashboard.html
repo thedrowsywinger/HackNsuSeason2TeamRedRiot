@@ -1,11 +1,130 @@
-<h3>Welcome to Dashboard</h3>
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <title>Mangement System</title>
+  </head>
+  <body class="bg-transparant">
 
-<a href="{% url 'company_A_app:inventory' %}">
+<!-- <a href="{% url 'company_A_app:inventory' %}">
 <button>Click here to add products to your inventory</button>
-</a>
+</a> -->
+
+    <!-- Navbar starts here   -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+        <a class="navbar-brand" href="#">Company A</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Registration</a>
+          </li>
+        </ul>
+     </div>
+   </nav>
+   <!-- navbar ends here -->
+
+<div class="container-fluid">
+  <!-- Headline starts here -->
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <p class="nav-link active">Dashboard</p>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Procurement List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Inventory</a>
+    </li>
+  </ul>
+  <!-- Headline ends here -->
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card" style="width: 18rem; height: 30rem;">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h5 class="card-title">Employee Info</h5><hr>
+        <p class="card-text">First Name: </p>
+        <p class="card-text">Last Name: </p><hr>
+        <p class="card-text">Email: </p><hr>
+        <p class="card-text">Role: </p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-8">
+    <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Item Name</label>
+    <input type="text" class="form-control" name="" value="">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add Product</button>
+</form>
+  </div>
+
+  <div class="col-sm-1"></div>
+
+</div>
 
 
-<a href="{% url 'home:logout' %}">
-<button>Click here to Logout</button>
-</a>
+</div>
+
+
+
+
+
+  <a href="">
+  <button>Click here to add products to your inventory</button>
+  </a>
+
+
+  <a href="{% url 'home:logout' %}">
+  <button>Click here to Logout</button>
+  </a>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="page-footer fixed-bottom font-small bg-dark">
+
+<!-- Copyright -->
+<div class="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+  <a href="#"> company A</a>
+</div>
+<!-- Copyright -->
+
+</footer>
+
+
+  </body>
+</html>
