@@ -57,7 +57,7 @@
   <!-- Headline ends here -->
 <div class="row">
   <div class="col-sm-3">
-    <div class="card" style="width: 18rem; height: 30rem;">
+    <div class="card" style="width: 18rem; height: 20rem;">
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
         <h5 class="card-title">Employee Info</h5><hr>
@@ -73,30 +73,78 @@
 
   <div class="col-sm-8">
     <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Item Name</label>
-    <input type="text" class="form-control" name="" value="">
-    <small id="emailHelp" class="form-text text-muted">Item will be added under your name</small>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Add Product</button>
-</form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Product Name</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>Tiles</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="product_quantity">Product quantity</label>
+          <input type="text" class="form-control" name="" value="">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Product Unit</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">Product price/unit</label>
+          <input type="text" class="form-control" name="" value="">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Product added by</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div>
+      <label for="">Product ID: </label><br>
+      <button type="submit" class="btn btn-primary">Add item</button>
+    </form>
   </div>
 
   <div class="col-sm-1"></div>
+</div>
+
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product added by</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Quantity</th>
+      <th scope="col">Product Unit</th>
+      <th scope="col">Price/unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Tiles</td>
+      <td>500</td>
+      <td>60000</td>
+      <td>120</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
 
 </div>
 
 
-</div>
-
-
-<!-- 
+<!--
   <a href="{% url 'home:logout' %}">
   <button>Click here to Logout</button>
   </a> -->
 
-</div>
 
 
 
