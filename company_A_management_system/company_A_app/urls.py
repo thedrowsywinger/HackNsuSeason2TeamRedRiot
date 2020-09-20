@@ -15,6 +15,6 @@ app_name = 'company_A_app'
 urlpatterns = [
 
     path('Dashboard/', DashboardView, name="dashboard"),
-    path('Inventory/', InventoryView, name="inventory")
+    path('Inventory/', InventoryView, name="procurement")
 
 ]
