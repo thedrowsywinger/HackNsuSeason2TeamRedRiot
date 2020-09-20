@@ -4,7 +4,7 @@ from company_A_app.models import CompanyAInventoryModel, ProfileModel
 class CompanyAInventoryForm(forms.ModelForm):
 
     class Meta:
-        model: CompanyAInventoryModel
+        model= CompanyAInventoryModel
         fields = [
             'product_name',
             'product_unit',
