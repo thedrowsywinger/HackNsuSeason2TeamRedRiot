@@ -72,36 +72,35 @@
   </div>
 
   <div class="col-sm-8">
-    <form>
+    <form method="POST">
+      {% csrf_token %}
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label for="inputState">Product Name</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>Tiles</option>
-          </select>
+          <input type="text" class="form-control" name="product_name">
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label for="product_quantity">Product quantity</label>
-          <input type="text" class="form-control" name="" value="">
+          <input type="text" class="form-control" name="product_quantity" value="">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="product_quantity">Product ID: </label>
+          <input type="text" class="form-control" name="product_id" value="">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputCity">Product Unit</label>
-          <input type="text" class="form-control" id="inputCity">
+          <input type="text" name="product_unit" class="form-control" id="inputCity">
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <label for="inputState">Product price/unit</label>
-          <input type="text" class="form-control" name="" value="">
+          <input type="text" class="form-control" name="product_price_per_unit" value="">
         </div>
-        <div class="form-group col-md-2">
-          <label for="inputZip">Product added by</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
+
       </div>
-      <label for="">Product ID: </label><br>
-      <button type="submit" class="btn btn-primary">Add item</button>
+      <br>
+      <button type="submit" name="adding_product" class="btn btn-primary">Add item</button>
     </form>
   </div>
 
