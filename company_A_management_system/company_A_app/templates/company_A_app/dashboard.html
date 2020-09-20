@@ -48,10 +48,10 @@
       <p class="nav-link active">Dashboard</p>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Inventory</a>
+      <a class="nav-link" href="{% url 'company_A_app:inventory' %}">Inventory</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'company_A_app:procurement' %}">Procurement Offers</a>
+      <a class="nav-link" href="#">Procurement Offers</a>
     </li>
   </ul>
   <!-- Headline ends here -->
@@ -72,7 +72,7 @@
   </div>
 
   <div class="col-sm-8">
-    <form method="POST">
+    <!-- <form method="POST">
       {% csrf_token %}
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -101,7 +101,9 @@
       </div>
       <br>
       <button type="submit" name="adding_product" class="btn btn-primary">Add item</button>
-    </form>
+    </form> -->
+
+    <h3>Dashboard</h3>
   </div>
 
   <div class="col-sm-1"></div>

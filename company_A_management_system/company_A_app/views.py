@@ -9,60 +9,6 @@ from company_A_app.forms import CompanyAInventoryForm
 def DashboardView(request):
 
     profile = ProfileModel.objects.get(user=request.user)
-
-    if 'adding_product' in request.POST:
-        print("Am I here")
-
-        incoming_data = {
-                'product_name': request.POST['product_name'],
-                'product_unit': request.POST['product_unit'],
-                'product_quantity': request.POST['product_quantity'],
-                'product_price_per_unit': request.POST['product_price_per_unit'],
-                'product_id': request.POST['product_id']
-            }
-
-        print(incoming_data)
-
-        incoming_info = CompanyAInventoryForm(incoming_data)
-
-        if CompanyAInventoryModel.objects.all().count() == 0:
-
-            if incoming_info.is_valid():
-                print("First time")
-                model = CompanyAInventoryModel(
-                    product_name = request.POST['product_name'],
-                    product_unit = request.POST['product_unit'],
-                    product_price_per_unit = request.POST['product_price_per_unit'],
-                    product_quantity = request.POST['product_quantity'],
-                    product_added_by = profile,
-                    product_id = request.POST['product_id'],
-                    company_a_product_id = 1
-
-                )
-                model.save()
-
-            else:
-                print(incoming_info.errors)
-
-        else:
-
-            current_product_id = CompanyAInventoryModel.objects.all().count() + 1
-
-            if incoming_info.is_valid():
-                print("there is history")
-                model = CompanyAInventoryModel(
-                    product_name = request.POST['product_name'],
-                    product_unit = request.POST['product_unit'],
-                    product_price_per_unit = request.POST['product_price_per_unit'],
-                    product_quantity = request.POST['product_quantity'],
-                    product_added_by = profile,
-                    company_a_product_id = current_product_id
-
-                )
-                model.save()
-
-            else:
-                print(incoming_info.errors)
     
     context = {
         'profile': profile,
@@ -104,7 +50,7 @@ def InventoryView(request):
                     company_a_product_id = 1
 
                 )
-                # model.save()
+                model.save()
 
             else:
                 print(incoming_info.errors)
@@ -124,7 +70,7 @@ def InventoryView(request):
                     company_a_product_id = current_product_id
 
                 )
-                # model.save()
+                model.save()
 
             else:
                 print(incoming_info.errors)

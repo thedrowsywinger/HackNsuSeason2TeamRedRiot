@@ -1,1 +1,164 @@
-Create a procurement offer here
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <title>Mangement System</title>
+  </head>
+  <body class="bg-transparant">
+
+
+
+    <!-- Navbar starts here   -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+        <a class="navbar-brand" href="#">Company A</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Registration</a>
+          </li>
+        </ul>
+     </div>
+   </nav>
+   <!-- navbar ends here -->
+
+<div class="container-fluid">
+  <!-- Headline starts here -->
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <p class="nav-link active">Dashboard</p>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Inventory</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="">Procurement Offers</a>
+    </li>
+  </ul>
+  <!-- Headline ends here -->
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-3 bg-light" style='opacity:0.9;border-radius:5px;'>
+
+    <form method="POST" class="affix"style="padding:5px;">
+
+        {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Product Name</label>
+          <select id="inputState" name="product_name" class="form-control">
+            <option selected>Choose...</option>
+            {% for i in products %}
+            <option>i</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="product_quantity">Product quantity</label>
+          <input type="text" class="form-control" name="product_quantity" value="">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Product Unit</label>
+          <input type="text" name="product_unit" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputState">Product price/unit</label>
+          <input type="text" class="form-control" name="product_price_per_unit" value="">
+        </div>
+      </div>
+      <label for="">Product ID: </label><br>
+      <button type="submit" name="offer_submission" class="btn btn-primary">Click to add item for vendors</button>
+
+    </form>
+
+  </div>
+
+  <div class="col-sm-7">
+        <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product added by</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Quantity</th>
+        <th scope="col">Product Unit</th>
+        <th scope="col">Price/unit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Tiles</td>
+        <td>500</td>
+        <td>60000</td>
+        <td>120</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-1"></div>
+</div>
+
+  <div class="row">
+
+
+<div class="col-sm-2"></div>
+  <div class="col-sm-8 bg-light" style='opacity:0.9'>
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+</div>
+
+
+<!--
+  <a href="{% url 'home:logout' %}">
+  <button>Click here to Logout</button>
+  </a> -->
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="page-footer fixed-bottom font-small bg-dark">
+
+<!-- Copyright -->
+<div class="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+  <a href="#"> company A</a>
+</div>
+<!-- Copyright -->
+
+</footer>
+
+
+  </body>
+</html>
