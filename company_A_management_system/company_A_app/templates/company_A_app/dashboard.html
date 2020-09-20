@@ -14,6 +14,7 @@
   <body class="bg-transparant">
 
 
+
     <!-- Navbar starts here   -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
         <a class="navbar-brand" href="#">Company A</a>
@@ -60,10 +61,10 @@
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
         <h5 class="card-title">Employee Info</h5><hr>
-        <p class="card-text">First Name: </p>
-        <p class="card-text">Last Name: </p><hr>
-        <p class="card-text">Email: </p><hr>
-        <p class="card-text">Role: </p>
+        <p class="card-text">First Name: {{profile.first_name}}</p>
+        <p class="card-text">Last Name: {{profile.last_name}}</p><hr>
+        <p class="card-text">Email: {{profile.company_email}}</p><hr>
+        <p class="card-text">Role: {{profile.company_role}}</p>
 
       </div>
     </div>
@@ -75,7 +76,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Item Name</label>
     <input type="text" class="form-control" name="" value="">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <small id="emailHelp" class="form-text text-muted">Item will be added under your name</small>
   </div>
 
   <button type="submit" class="btn btn-primary">Add Product</button>
@@ -90,17 +91,10 @@
 </div>
 
 
-
-
-
-  <a href="">
-  <button>Click here to add products to your inventory</button>
-  </a>
-
-
+<!-- 
   <a href="{% url 'home:logout' %}">
   <button>Click here to Logout</button>
-  </a>
+  </a> -->
 
 </div>
 

@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 from company_A_app.views import (
 
-    DashboardView
+    DashboardView,
+    InventoryView
 
 )
 
@@ -13,6 +14,7 @@ app_name = 'company_A_app'
 
 urlpatterns = [
 
-    path('Dashboard/', DashboardView, name="dashboard")
+    path('Dashboard/', DashboardView, name="dashboard"),
+    path('Inventory/', InventoryView, name="inventory")
 
 ]

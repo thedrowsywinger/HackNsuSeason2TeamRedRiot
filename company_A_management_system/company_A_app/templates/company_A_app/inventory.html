@@ -1,1 +1,23 @@
 <h3>This is the inventory</h3>
+
+Any products added from here will be registered under the current user's name
+
+<form action="" method="POST">
+    
+    {% csrf_token %}
+
+    <label for="">Product Name</label>
+    <input type="text" name="product_name" id="">
+    <br>
+    <label for="">Product Unit</label>
+    <input type="text" name="product_unit">
+    <br>
+    <label for="">Product Quantity</label>
+    <input type="text" name="product_quantity">
+    <br>
+    <label for="">Product Price per Unit</label>
+    <input type="text" name="product_price_per_unit">
+
+    <button type="submit" name="adding_product">Add this product to the inventory!</button>
+
+</form>

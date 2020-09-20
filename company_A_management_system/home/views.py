@@ -22,11 +22,15 @@ def HomeView(request):
         if current_user.count() > 0:
 
             current_user = User.objects.get(email=email)
-            current_user_username=current_user.username
+            if current_user.is_active == False:
+                return HttpResponse("Sorry , your account still hasn't been activated , please contact the authority")
 
-            user = authenticate(request, username=current_user_username, password=password)
-            login(request, user)
-            return redirect('company_A_app:dashboard')
+            else:
+                current_user_username=current_user.username
+
+                user = authenticate(request, username=current_user_username, password=password)
+                login(request, user)
+                return redirect('company_A_app:dashboard')
         
         else:
             print("No user found")
