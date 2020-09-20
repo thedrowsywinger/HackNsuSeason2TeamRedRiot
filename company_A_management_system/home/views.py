@@ -12,12 +12,25 @@ from django.http import HttpResponse
 # Create your views here.
 def HomeView(request):
 
-    print("Am I here")
+    if 'logging_in' in request.POST:
 
-    return render(request, "home/home.html")
+        email = request.POST.get('email')
+        password = request.POST.get('password')
 
+        current_user = User.objects.filter(email=email)
+        
+        if current_user.count() > 0:
 
-def SigningUpCompanyRepresentativesView(request):
+            current_user = User.objects.get(email=email)
+            current_user_username=current_user.username
+
+            user = authenticate(request, username=current_user_username, password=password)
+            login(request, user)
+            return redirect('company_A_app:dashboard')
+        
+        else:
+            print("No user found")
+            return HttpResponse("You are still not a verified user of this system or you just don't exist. Perhaps this is your first time?")
 
     if 'signing_up' in request.POST:
         print("Am I here")
@@ -46,8 +59,8 @@ def SigningUpCompanyRepresentativesView(request):
             current_user.username = str(request.POST['first_name']+"_"+request.POST['last_name'])
             current_user.save()
             print("This is : ", current_user.first_name)
-            # current_user.is_active = False
-            # current_user.save()
+            current_user.is_active = False
+            current_user.save()
             model = ProfileModel(
                 first_name=request.POST['first_name'],
                 last_name=request.POST['last_name'],
@@ -59,31 +72,9 @@ def SigningUpCompanyRepresentativesView(request):
         else:
             print(verifying_signup.errors)
 
-    return render(request, "accounts/signup.html")
+        
 
-
-
-def LoggingInCompanyRepresentativesView(request):
-
-    if 'logging_in' in request.POST:
-
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        print(email)
-        current_user = User.objects.get(email=email)
-        current_user_username=current_user.username
-
-        user = authenticate(request, username=current_user_username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return HttpResponse("You have been logged in")
-        else:
-            print("No user found")
-            return HttpResponse("You are still not a verified user of this system")
-
-    return render(request, "accounts/login.html")
+    return render(request, "home/home.html")
 
 
 def LogoutView(request):

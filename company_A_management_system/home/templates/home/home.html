@@ -59,17 +59,18 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4 bg-light"style="padding:10px;box-shadow: -3px 5px 30px #999;opacity: 0.9;border-radius:10px;">
 
-          <form>
+          <form method="POST">
+            {% csrf_token %}
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" name="logging_in" class="btn btn-primary">Login</button>
           </form>
 
         </div>
@@ -84,41 +85,48 @@
             <div class="col-sm-4"></div>
             <div class="col-sm-7 bg-light"style="padding:10px;box-shadow: -3px 5px 30px #999;opacity: 0.9;border-radius:10px;">
 
-              <form>
+              <form method="POST">
+                {% csrf_token %}
                 <div class="form-group">
                   <h2>Registration</h2>
                   <hr>
                   <small id="passwordHelpBlock" class="form-text text-muted">
                   Enter your First Name here
                   </small>
-                  <input type="text" class="form-control" name="firstName">
+                  <input type="text" class="form-control" name="first_name">
                   <small id="passwordHelpBlock" class="form-text text-muted">
-                  Enter your Second Name here
+                  Enter your Last Name here
                   </small>
-                   <input type="text" class="form-control" name="secondName">
+                   <input type="text" class="form-control" name="last_name">
                  </div>
 
                  <div class="form-group">
                    <small id="passwordHelpBlock" class="form-text text-muted">
                    Email(something@gmail.com). We'll never share your email with anyone else.
                    </small>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="email" name="company_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
 
                 <div class="form-group">
                   <small id="passwordHelpBlock" class="form-text text-muted">
                   Your role as assigned by your supervisor
                   </small>
-                <input type="text" name="" value="">
+                <input type="text" name="company_role" value="">
                </div>
 
                 <div class="form-group">
                   <small id="passwordHelpBlock" class="form-text text-muted">
                   Password
                   </small>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" name="password1" class="form-control" id="exampleInputPassword1">
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <div class="form-group">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                  Please enter your password again
+                  </small>
+                  <input type="password" name="password2" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" name="signing_up" class="btn btn-primary">Register</button>
               </form>
 
             </div>

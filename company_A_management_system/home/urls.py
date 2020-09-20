@@ -6,8 +6,7 @@ from django.conf.urls.static import static
 from home.views import (
     
     HomeView,
-    SigningUpCompanyRepresentativesView,
-    LoggingInCompanyRepresentativesView
+    LogoutView,
 
 )
 
@@ -16,7 +15,6 @@ app_name = 'home'
 urlpatterns = [
 
     path('', HomeView, name='home'),
-    path('Company-Representative-Sign-Up/', SigningUpCompanyRepresentativesView, name='signing_up'),
-    path('Company-Representative-Log-In/', LoggingInCompanyRepresentativesView, name='logging_in'),
+    path('logout/', LogoutView, name='logout')
 
 ]
