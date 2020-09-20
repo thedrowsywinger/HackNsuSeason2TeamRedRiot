@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
     <title>Mangement System</title>
   </head>
-  <body class="bg-light">
+  <body class="bg-transparant">
     <!-- Navbar starts here   -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
         <a class="navbar-brand" href="#">Company A</a>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,9 +21,15 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'home:home' %}">Home</a>
           </li>
+<<<<<<< HEAD
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li> -->
+=======
           <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:logging_in' %}">Login</a>
           </li>
+>>>>>>> cfee9ff3400422c92871468f00aca98bb0ec4103
           <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:signing_up' %}">Registration</a>
           </li>
@@ -31,21 +37,109 @@
      </div>
    </nav>
    <!-- navbar ends here -->
-   <div class="circle1"></div>
-   <div class="circle2"></div>
-   <div class="circle3"></div>
-   <div class="circle4"></div>
 
-   <div class="container">
+  <div class="container-fluid" style="margin-bottom:8%;">
+
+
     <!-- Headline starts here -->
 
-      <div class="container-fluid bg-light"style='padding:30px'>
-        <h1 class="display-1 text-dark">Company A</h1>
-      <p class="h5 text-dark">We serve the very best</p>
-      </div>
-  </div>
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
 
-<!-- Headline ends here -->
+      <div class="row head">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-7">
+          <h1 class="display-1">Company A</h1>
+          <p class="h4">We serve the best</p>
+        </div>
+      </div>
+
+  <!-- Headline ends here -->
+
+
+  <!-- Login starts here -->
+
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4 bg-light"style="padding:10px;box-shadow: -3px 5px 30px #999;opacity: 0.9;border-radius:10px;">
+
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+
+        </div>
+      <div class="col-sm-6"></div>
+    </div>
+      <!-- Login ends here -->
+
+
+      <!-- Registration starts here -->
+
+          <div class="row" style="margin-top:10%;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-7 bg-light"style="padding:10px;box-shadow: -3px 5px 30px #999;opacity: 0.9;border-radius:10px;">
+
+              <form>
+                <div class="form-group">
+                  <h2>Registration</h2>
+                  <hr>
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                  Enter your First Name here
+                  </small>
+                  <input type="text" class="form-control" name="firstName">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                  Enter your Second Name here
+                  </small>
+                   <input type="text" class="form-control" name="secondName">
+                 </div>
+
+                 <div class="form-group">
+                   <small id="passwordHelpBlock" class="form-text text-muted">
+                   Email(something@gmail.com). We'll never share your email with anyone else.
+                   </small>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-group">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                  Your role as assigned by your supervisor
+                  </small>
+                <input type="text" name="" value="">
+               </div>
+
+                <div class="form-group">
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                  Password
+                  </small>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+              </form>
+
+            </div>
+          <div class="col-sm-1"></div>
+        </div>
+          <!-- Registration ends here -->
+
+    </div>
+
+
+
+
+
+
+
 
   <!-- Footer -->
 <footer class="page-footer fixed-bottom font-small bg-dark">
