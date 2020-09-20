@@ -18,7 +18,8 @@ class CompanyAInventoryModel(models.Model):
     product_quantity = models.FloatField()
     product_unit = models.CharField(max_length = 50)
     product_price_per_unit = models.FloatField()
-    # product_added_by = models.ForeignKey(ProfileModel)
+    product_added_by = models.ForeignKey(ProfileModel, on_delete=models.CASCADE)
+    company_a_product_id = models.IntegerField()
 
     def __str__(self):
         return self.product_name
