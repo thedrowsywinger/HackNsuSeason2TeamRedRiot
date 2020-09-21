@@ -40,6 +40,9 @@ def offerView(request):
             return render(request, 'vendor_app/procurement_offer.html',{
             'error': incoming_info.errors,
             })
+    return render(request, 'vendor_app/procurement_offer.html',{
+    'products' : procurement_list,
+    })
 
 
 # def track_offer(request):
