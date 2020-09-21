@@ -36,8 +36,9 @@
   </ul>
   <!-- Headline ends here -->
 <div class="row">
-  <div class="col-sm-3">
-    <div class="card" style="width: 18rem; height: 20rem;">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-2">
+    <div class="card" style="width: 18rem; height: 20rem; border-radius:10px;">
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
         <h5 class="card-title">Employee Info</h5><hr>
@@ -51,7 +52,7 @@
 
   </div>
 
-  <div class="col-sm-8">
+  <div class="col-sm-8 bg-light" style="opacity:0.9;border-radius:10px;">
     <form method="POST">
       {% csrf_token %}
       <div class="form-row">
@@ -82,6 +83,7 @@
 
   <div class="col-sm-1"></div>
 </div>
+<br>
 
   <div class="row">
     <div class="col-sm-2"></div>
