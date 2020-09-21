@@ -38,7 +38,7 @@ class AcceptedOfferDetailsModel(models.Model):
     paid_using = models.CharField(max_length=100, blank=True)
     paid_amount = models.CharField(max_length=100, blank=True)
     attachments = models.FileField(upload_to=payment_attachment_path, blank=True)
-    paid_on = models.DateField(blank=True)
+    # paid_on = models.DateField(blank=True)
 
     def __str__(self):
         return self.proc_offer.product_name
