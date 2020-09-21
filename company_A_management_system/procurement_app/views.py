@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from random import randint
 
-from procurement_app.models import ProcurementOfferModel, AcceptedOfferModel
+from procurement_app.models import ProcurementOfferModel, AcceptedOfferModel, AcceptedOfferDetailsModel
 from company_A_app.models import CompanyAInventoryModel
 from vendor_app.models import proposalModel
 
@@ -99,13 +99,22 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
 
         total_cost = (vendor_offer.vendor_price) * (vendor_offer.vendor_quantity)
 
-        model = AcceptedOfferModel(
+        # model = AcceptedOfferModel(
+        #     due_date = proc_offer.due_date,
+        #     vendor_unique_code = unique_code,
+        #     offered_price_per_unit = vendor_offer.vendor_price,
+        #     offered_quantity = vendor_offer.vendor_quantity,
+        #     total_cost = total_cost,
+        #     proc_offer = proc_offer
+        # )
+        # model.save()
+
+        model = AcceptedOfferDetailsModel(
             due_date = proc_offer.due_date,
             vendor_unique_code = unique_code,
-            offered_price_per_unit = vendor_offer.vendor_price,
-            offered_quantity = vendor_offer.vendor_quantity,
             total_cost = total_cost,
-            proc_offer = proc_offer
+            proc_offer = proc_offer,
+            vendor=vendor_offer,
         )
         model.save()
 
@@ -137,13 +146,22 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
 
         total_cost = (vendor_offer.vendor_price) * (vendor_offer.vendor_quantity)
 
-        model = AcceptedOfferModel(
+        # model = AcceptedOfferModel(
+        #     due_date = proc_offer.due_date,
+        #     vendor_unique_code = unique_code,
+        #     offered_price_per_unit = vendor_offer.vendor_price,
+        #     offered_quantity = vendor_offer.vendor_quantity,
+        #     total_cost = total_cost,
+        #     proc_offer = proc_offer
+        # )
+        # model.save()
+
+        model = AcceptedOfferDetailsModel(
             due_date = proc_offer.due_date,
             vendor_unique_code = unique_code,
-            offered_price_per_unit = vendor_offer.vendor_price,
-            offered_quantity = vendor_offer.vendor_quantity,
             total_cost = total_cost,
-            proc_offer = proc_offer
+            proc_offer = proc_offer,
+            vendor=vendor_offer,
         )
         model.save()
 
@@ -166,3 +184,16 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
 
 
     return HttpResponse("Request Accepted")
+
+
+def ProcurementOrderView(request, vendor_unique_code):
+
+    print("Here: ", vendor_unique_code)
+
+    accepted_offer = AcceptedOfferDetailsModel.objects.get(vendor_unique_code=vendor_unique_code)
+
+    context = {
+        'accepted_offer': accepted_offer
+    }
+
+    return render(request, 'procurement_app/procurement_order.html', context)

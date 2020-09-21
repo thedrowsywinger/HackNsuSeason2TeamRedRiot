@@ -118,7 +118,7 @@
         {% elif i.status == "Accepted" %}
         <td>{{i.status}}</td>
         <td>
-          <a href="">
+          <a href="{% url 'procurement_app:order_view' vendor_unique_code=i.vendor_unique_code %}">
             <button>
               View Details
             </button>

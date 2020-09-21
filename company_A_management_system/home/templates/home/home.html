@@ -13,26 +13,7 @@
   </head>
   <body class="bg-transparant">
     <!-- Navbar starts here   -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-        <a class="navbar-brand" href="#">Company A</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registration</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'vendor_app:offer' %}">Offer List</a>
-          </li>
-        </ul>
-     </div>
-   </nav>
+    {% include 'navbar.html' %}
    <!-- navbar ends here -->
 
   <div class="container-fluid" style="margin-bottom:8%;">
