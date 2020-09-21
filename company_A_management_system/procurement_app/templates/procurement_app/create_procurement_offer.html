@@ -70,6 +70,12 @@
           <input type="text" class="form-control" name="product_price_per_unit" value="">
         </div>
       </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Due Date</label>
+          <input type="date" name="due_date" class="form-control" id="inputCity">
+        </div>
+      </div>
       <br>
       <button type="submit" name="offer_submission" class="btn btn-primary">Click to add item for vendors</button>
 
@@ -102,12 +108,23 @@
         <td>{{i.product_unit}}</td>
         <td>{{i.product_price_per_unit}}</td>
         <td>{{i.issue_date}}</td>
+        {% if i.status == "Pending" %}
         <td>{{i.status}}</td>
         <td>
           <a href="{% url 'procurement_app:particular_product_offers' product_id=i.company_a_proc_id %}">
           <button>Click Here</button>
           </a>
         </td>
+        {% elif i.status == "Accepted" %}
+        <td>{{i.status}}</td>
+        <td>
+          <a href="">
+            <button>
+              View Details
+            </button>
+          </a>
+        </td>
+        {% endif %}
           
       </tr>
       {% endfor %}

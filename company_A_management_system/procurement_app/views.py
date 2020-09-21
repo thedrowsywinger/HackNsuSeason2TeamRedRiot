@@ -10,6 +10,11 @@ from procurement_app.forms import ProcurementOfferForm
 
 from django.http import HttpResponse
 
+from django.template.loader import render_to_string
+from django.core.mail import send_mail, EmailMessage
+from django.conf import settings
+
+
 # Create your views here.
 
 def CreateProcurementOfferView(request):
@@ -23,7 +28,7 @@ def CreateProcurementOfferView(request):
         incoming_data = {
             'product_name': request.POST['product_name'],
             'product_quantity': request.POST['product_quantity'],
-            'product_price_per_unit': request.POST['product_price_per_unit']
+            'product_price_per_unit': request.POST['product_price_per_unit'],
             # 'due_date': request.POST['due_date'],
         }
 
@@ -34,11 +39,15 @@ def CreateProcurementOfferView(request):
         if incoming_info.is_valid():
             print("valid")
 
+            product_id = CompanyAInventoryModel.objects.get(product_name=request.POST['product_name']).company_a_product_id
+
             model = ProcurementOfferModel(
                     product_name = request.POST['product_name'],
                     product_quantity = request.POST['product_quantity'],
                     product_price_per_unit=request.POST['product_price_per_unit'],
+                    product_unit = request.POST['product_unit'],
                     due_date = request.POST['due_date'],
+                    company_a_proc_id=product_id
                 )
             model.save()
 
@@ -104,6 +113,19 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
         proc_offer.vendor_unique_code=unique_code
         proc_offer.save()
 
+        mail_subject = 'Congratulations'
+        message = render_to_string('procurement_app/accepted_offer_email.html', {
+            'uid': unique_code,
+        })
+        to_email = vendor_offer.vendor_email
+        email = EmailMessage(
+                    mail_subject, message, to=[to_email]
+        )
+        print("The email being sent")
+        print("Email will be sent to: ", vendor_offer.vendor_email)
+        print(message)
+        # email.send()
+
     else:
         
         current_unique_codes = []
@@ -128,6 +150,19 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
         proc_offer.status = "Accepted"
         proc_offer.vendor_unique_code=unique_code
         proc_offer.save() 
+
+        mail_subject = 'Congratulations'
+        message = render_to_string('procurement_app/accepted_offer_email.html', {
+            'uid': unique_code,
+        })
+        to_email = vendor_offer.vendor_email
+        email = EmailMessage(
+                    mail_subject, message, to=[to_email]
+        )
+        print("The email being sent")
+        print(message)
+        # email.send()
+
 
 
     return HttpResponse("Request Accepted")
