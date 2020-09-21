@@ -73,6 +73,13 @@ Figure 3.0
    <img width="700" height="430" src="images/offerlist.png"><br>
    Figure 5.0
    </p>
+   <h4>2.2.4 Track Acceptance</h4>
+  <p>The unique code sent to the vendor can be used to track his proposal status
+    </p>
+    <p align="center">
+    <img width="700" height="200" src="images/track.png"><br>
+    Figure 6.0
+    </p>
 
    <h4>2.3 Dashboard:</h4>
    <p>This view contains all the necessary information that the company representative needs to know.
@@ -82,34 +89,34 @@ Figure 3.0
   </p>
     <p align="center">
     <img width="700" height="430" src="images/inventory.png"><br>
-    Figure 6.0
+    Figure 7.0
   </p>
   <h4>2.2.2 Procurement Offer</h4>
- <p>This contains a table of the offers received from vendors and products offered for procurement. Any products thats low in inventory can be added via the form here to add it to the procurement list. 
+ <p>This contains a table of the offers received from vendors and products offered for procurement. Any products thats low in inventory can be added via the form here to add it to the procurement list.
  Clicking the button "Click Here" , takes the user to a page with all offers for that particular product
  </p>
    <p align="center">
    <img width="700" height="430" src="images/procurementlist.png"><br>
-   Figure 5.0
+   Figure 8.0
  </p>
  <h4>2.2.3 Proposal list</h4>
  <p>This contains all the proposals sent by a vendor for a particular product. Representative can choose to accept the proposals here. This will trigger a acceptance message (sent via email) to the vendor with a unique ID.
  </p>
    <p align="center">
    <img width="700" height="430" src="images/vendor_offer_list.png"><br>
-   Figure 6.0
+   Figure 9.0
  </p>
   <h4>2.2.4 View Details</h4>
  <p>This contains all the details of the offer accepted of a particular product.
  </p>
    <p align="center">
    <img width="700" height="430" src="images/details.png"><br>
-   Figure 7.0
+   Figure 10.0
  </p>
   <h4>2.2.5 Finalize Payment</h4>
  <p>This contains a form to finalize the payment.
  </p>
    <p align="center">
    <img width="700" height="430" src="images/finalize_payment.png"><br>
-   Figure 8.0
+   Figure 11.0
  </p>
