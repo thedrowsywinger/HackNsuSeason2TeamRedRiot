@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.models import User
 from company_A_app.models import ProfileModel
+from procurement_app.models import AcceptedOfferDetailsModel
 
 from home.forms import CompanyRepresentativeSignupForm
 
@@ -18,7 +19,7 @@ def HomeView(request):
         password = request.POST.get('password')
 
         current_user = User.objects.filter(email=email)
-        
+
         if current_user.count() > 0:
 
             current_user = User.objects.get(email=email)
@@ -31,10 +32,23 @@ def HomeView(request):
                 user = authenticate(request, username=current_user_username, password=password)
                 login(request, user)
                 return redirect('company_A_app:dashboard')
-        
+
         else:
             print("No user found")
             return HttpResponse("You are still not a verified user of this system or you just don't exist. Perhaps this is your first time?")
+
+    if 'trackerButton' in request.POST:
+            tracker = request.POST['tracker']
+            try:
+                code = AcceptedOfferDetailsModel.objects.get(vendor_unique_code=tracker)
+                return render(request, 'home/home.html', {
+                'tracker_info': code,
+                })
+            except:
+                return render(request, 'home/home.html', {
+                'no_tracker': 'Not such proposal exist',
+                })
+
 
     if 'signing_up' in request.POST:
         print("Am I here")
@@ -76,7 +90,7 @@ def HomeView(request):
         else:
             print(verifying_signup.errors)
 
-        
+
 
     return render(request, "home/home.html")
 
@@ -84,5 +98,5 @@ def HomeView(request):
 def LogoutView(request):
 
 	logout(request)
-    
+
 	return redirect('home:home')

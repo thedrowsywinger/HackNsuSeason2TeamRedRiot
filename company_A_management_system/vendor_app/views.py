@@ -63,12 +63,3 @@ def offerView(request):
     'products' : procurement_list,
     # 'offer_expiring_list': offer_expiring_list,
     })
-
-
-# def track_offer(request):
-#     code = ProcurementOfferModel.objects.all()
-#     if 'trackerButton' in request.POST:
-#         for i in code.id:
-#             if(i == request.POST['tracker']):
-#                 return render(request, 'home/home.html')
-#     return render(request, "vendor_app/home.html")
