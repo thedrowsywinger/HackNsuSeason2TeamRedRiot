@@ -1,0 +1,95 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <title>Mangement System</title>
+  </head>
+  <body class="bg-transparant">
+
+
+
+    <!-- Navbar starts here   -->
+    {% include 'navbar.html' %}
+   <!-- navbar ends here -->
+
+<div class="container-fluid">
+  <!-- Headline starts here -->
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Dashboard</a>
+    </li>
+  </ul>
+  <!-- Headline ends here -->
+
+  <div class="col-sm-3 bg-light" style='opacity:0.9;border-radius:5px;'>
+
+    <form method="POST" class="affix"style="padding:5px;">
+
+        {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Payment Method</label>
+          <select id="inputState" name="payment_method" class="form-control">
+            <option selected>Choose...</option>
+            <option>Cash</option>
+            <option>Bank Transfer</option>
+            <option>Cheque Payment</option>
+            <option>Other</option>
+          </select>
+
+        </div>
+        <div class="form-group col-md-6">
+          <label for="product_quantity">Amount</label>
+          <input type="text" class="form-control" name="amount" value="">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="inputCity">Please attach the receipt/necessary file for proof</label>
+          <input type="file" name="attachments" class="form-control" id="inputCity">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Paid on</label>
+          <input type="date" name="payment_date" class="form-control" id="inputCity">
+        </div>
+      </div>
+      <br>
+      <button type="submit" name="payment_submission" class="btn btn-primary">Submit!</button>
+
+    </form>
+
+  </div>
+
+
+
+
+  <!-- Footer -->
+  <footer class="page-footer fixed-bottom font-small bg-dark">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+      <a href="#"> company A</a>
+    </div>
+    <!-- Copyright -->
+    
+    </footer>
+    
+    </body>
+
+</html>
+    

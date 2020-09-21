@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from random import randint
 
-from procurement_app.models import ProcurementOfferModel, AcceptedOfferModel, AcceptedOfferDetailsModel
+from procurement_app.models import ProcurementOfferModel, AcceptedOfferDetailsModel
 from company_A_app.models import CompanyAInventoryModel
 from vendor_app.models import proposalModel
 
@@ -13,6 +13,8 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
+
+
 
 
 # Create your views here.
@@ -197,3 +199,27 @@ def ProcurementOrderView(request, vendor_unique_code):
     }
 
     return render(request, 'procurement_app/procurement_order.html', context)
+
+def FinalizePaymentView(request, vendor_unique_code):
+
+    accepted_offer = AcceptedOfferDetailsModel.objects.get(vendor_unique_code=vendor_unique_code)
+
+    if 'payment_submission' in request.POST:
+
+        incoming_data = {
+            'payment_method' : request.POST['payment_method']
+        }
+        print(incoming_data)
+
+        accepted_offer.paid_using = request.POST['payment_method']
+        accepted_offer.paid_amount = request.POST['amount']
+        accepted_offer.attachments = request.POST.get('attachments', False)
+        accepted_offer.paid_on = request.POST['payment_date']
+        accepted_offer.status = "Paid"
+        accepted_offer.save()
+
+        return HttpResponse("Your payment was successful")
+
+
+
+    return render(request, "procurement_app/payment.html")
