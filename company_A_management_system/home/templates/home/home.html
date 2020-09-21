@@ -143,8 +143,37 @@
                     <input type="text" class="form-control" name="tracker" placeholder="Enter your unique code here to check your status quo">
                 </div>
 
-                <button type="button"class="btn btn-primary" name="trackerButton">Track</button>
+                <button type="submit"class="btn btn-primary" name="trackerButton">Track</button>
               </form>
+              <br>
+              {% if tracker_info %}
+              <div class="bg-light">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Cost</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">{{tracker_info.vendor_unique_code}}</th>
+                      <td>{{tracker_info.vendor.vendor_name}} </td>
+                      <td>{{tracker_info.total_cost}}</td>
+                      <td>{{tracker_info.status}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              {% endif %}
+              {% if no_tracker %}
+              <div class="bg-light">
+                <p>{{no_tracker}}</p>
+              </div>
+              {% endif%}
             </div>
             <div class="col-sm-3"></div>
           </div>
