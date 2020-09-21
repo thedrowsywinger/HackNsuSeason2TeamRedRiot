@@ -16,23 +16,7 @@
 
 
     <!-- Navbar starts here   -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-        <a class="navbar-brand" href="#">Company A</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registration</a>
-          </li>
-        </ul>
-     </div>
-   </nav>
+    {% include 'navbar.html' %}
    <!-- navbar ends here -->
 
 <div class="container-fluid">
@@ -98,7 +82,7 @@
     <thead>
       
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Product ID</th>
         <th scope="col">Product Name</th>
         <th scope="col">Product Quantity</th>
         <th scope="col">Product Unit</th>
@@ -112,14 +96,19 @@
     <tbody>
       {% for i in proc_offers %}
       <tr>
-        <th scope="row">1</th>
+        <th scope="row">{{i.company_a_proc_id}}</th>
         <td>{{i.product_name}}</td>
         <td>{{i.product_quantity}}</td>
         <td>{{i.product_unit}}</td>
         <td>{{i.product_price_per_unit}}</td>
         <td>{{i.issue_date}}</td>
         <td>{{i.status}}</td>
-        <td><button>Click Here</button></td>
+        <td>
+          <a href="{% url 'procurement_app:particular_product_offers' product_id=i.company_a_proc_id %}">
+          <button>Click Here</button>
+          </a>
+        </td>
+          
       </tr>
       {% endfor %}
     </tbody>

@@ -19,7 +19,7 @@ def DashboardView(request):
                 'product_unit': request.POST['product_unit'],
                 'product_quantity': request.POST['product_quantity'],
                 'product_price_per_unit': request.POST['product_price_per_unit'],
-                'product_id': request.POST['product_id']
+                # 'product_id': request.POST['product_id']
             }
 
         print(incoming_data)
@@ -30,13 +30,13 @@ def DashboardView(request):
 
             if incoming_info.is_valid():
                 print("First time")
+                
                 model = CompanyAInventoryModel(
                     product_name = request.POST['product_name'],
                     product_unit = request.POST['product_unit'],
                     product_price_per_unit = request.POST['product_price_per_unit'],
                     product_quantity = request.POST['product_quantity'],
                     product_added_by = profile,
-                    product_id = request.POST['product_id'],
                     company_a_product_id = 1
 
                 )
@@ -57,7 +57,7 @@ def DashboardView(request):
                     product_price_per_unit = request.POST['product_price_per_unit'],
                     product_quantity = request.POST['product_quantity'],
                     product_added_by = profile,
-                    company_a_product_id = current_product_id
+                    company_a_product_id = current_product_id,                    
 
                 )
                 model.save()
@@ -69,6 +69,7 @@ def DashboardView(request):
     products = CompanyAInventoryModel.objects.all()
 
     context = {
+        'profile': profile,
         'products': products
     }
 

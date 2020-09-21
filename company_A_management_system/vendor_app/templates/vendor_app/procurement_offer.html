@@ -16,23 +16,7 @@
 
 
     <!-- Navbar starts here   -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-        <a class="navbar-brand" href="#">Company A</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registration</a>
-          </li>
-        </ul>
-     </div>
-   </nav>
+    {% include 'navbar.html' %}
    <!-- navbar ends here -->
 
 <div class="container-fluid">
@@ -62,22 +46,24 @@
         <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Product ID</th>
         <!-- <th scope="col">Product added by</th> -->
         <th scope="col">Product Name</th>
         <th scope="col">Product Quantity</th>
         <th scope="col">Price/unit</th>
         <th scope="col">Issue date</th>
+        <th scope="col">Due date</th>
       </tr>
     </thead>
     <tbody>
       {% for item in products %}
       <tr>
-        <th scope="row">{{item.vendor_unique_code}}</th>
+        <th scope="row">{{item.company_a_proc_id}}</th>
         <td>{{item.product_name}}</td>
         <td>{{item.product_quantity}}</td>
         <td>{{item.product_price_per_unit}}</td>
         <td>{{item.issue_date}}</td>
+        <td>{{item.due_date}}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -125,9 +111,10 @@
           <div class="form-group">
             <label for="exampleFormControlSelect1">Product ID:</label>
             <select class="form-control" name='product_id' id="exampleFormControlSelect1">
+              <option value="">Choose Here</option>
               {% for item in products %}
 
-              <option>{{item.vendor_unique_code}}</option>
+              <option>{{item.company_a_proc_id}}</option>
 
               {% endfor %}
             </select>

@@ -13,26 +13,8 @@
   </head>
   <body class="bg-transparant">
 
-
-
     <!-- Navbar starts here   -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-        <a class="navbar-brand" href="#">Company A</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registration</a>
-          </li>
-        </ul>
-     </div>
-   </nav>
+    {% include 'navbar.html' %}
    <!-- navbar ends here -->
 
 <div class="container-fluid">
@@ -81,10 +63,6 @@
           <label for="product_quantity">Product quantity</label>
           <input type="text" class="form-control" name="product_quantity" value="">
         </div>
-        <div class="form-group col-md-4">
-          <label for="product_quantity">Product ID: </label>
-          <input type="text" class="form-control" name="product_id" value="">
-        </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -111,7 +89,7 @@
       <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Product ID</th>
       <th scope="col">Product added by</th>
       <th scope="col">Product Name</th>
       <th scope="col">Product Quantity</th>
@@ -122,7 +100,7 @@
   <tbody>
     {% for i in products %}
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">{{i.company_a_product_id}}</th>
       <td>{{i.product_added_by.first_name}} {{i.product_added_by.last_name}}</td>
       <td>{{i.product_name}}</td>
       <td>{{i.product_quantity}}</td>

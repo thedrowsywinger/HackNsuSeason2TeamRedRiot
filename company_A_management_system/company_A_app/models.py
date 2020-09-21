@@ -15,7 +15,6 @@ class ProfileModel(models.Model):
 
 class CompanyAInventoryModel(models.Model):
     product_name = models.CharField(max_length=100)
-    product_id = models.CharField(max_length=40)
     product_quantity = models.FloatField()
     product_unit = models.CharField(max_length = 50)
     product_price_per_unit = models.FloatField()
