@@ -8,7 +8,8 @@ from procurement_app.views import (
     CreateProcurementOfferView,
     OffersForAProductView,
     AcceptingVendorOffer,
-    ProcurementOrderView
+    ProcurementOrderView,
+    FinalizePaymentView
 
 )
 
@@ -20,5 +21,6 @@ urlpatterns = [
     path('Offers/<str:product_id>', OffersForAProductView, name='particular_product_offers'),
     path('Accept-Offer/<str:proposal_id>/<str:product_id>/', AcceptingVendorOffer, name='accepting_offer'),
     path('Order-View/<str:vendor_unique_code>/', ProcurementOrderView, name="order_view"),
+    path('Finalize-Payment/<str:vendor_unique_code>/', FinalizePaymentView, name="payment")
 
 ]

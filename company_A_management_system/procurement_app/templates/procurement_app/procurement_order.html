@@ -39,17 +39,19 @@
   <br>
   <p></p>
 
-  <div class="col-sm-7">
+  <div class="col-sm-9">
     <table class="table">
 <thead>
   
   <tr>
     <th scope="col">Vendor Name</th>
     <th scope="col">Vendor Email</th>
-    <th scope="col">Offered Price</th>
+    <th scope="col">Offered Price/Unit (BDT)</th>
     <th scope="col">Offered Quantity</th>
     <th scope="col">Additional Notes</th>
     <th scope="col">Due Date</th>
+    <th scope="col">Total Cost (BDT)</th>
+    <th scope="col">Payment Status</th>
   </tr>
   
 </thead>
@@ -60,7 +62,15 @@
     <td>{{accepted_offer.vendor.vendor_price}}</td>
     <td>{{accepted_offer.vendor.vendor_quantity}}</td>
     <td>{{accepted_offer.vendor.vendor_info}}</td>
-    <td>{{accepted_offer.due_date}}</td>      
+    <td>{{accepted_offer.due_date}}</td>
+    <td>{{accepted_offer.total_cost}}</td>   
+    <td>
+      <a href="{% url 'procurement_app:payment' vendor_unique_code=accepted_offer.vendor_unique_code %}">
+      <button>
+        Click here to finalize payment
+      </button>
+      </a>
+    </td>   
   </tr>
 </tbody>
 </table>

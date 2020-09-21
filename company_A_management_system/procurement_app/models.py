@@ -21,20 +21,11 @@ class ProcurementOfferModel(models.Model):
     def __str__(self):
         return self.product_name
 
-class AcceptedOfferModel(models.Model):
 
-    due_date = models.DateField()
-    vendor_unique_code = models.CharField(max_length=100)
-    offered_price_per_unit = models.FloatField()
-    offered_quantity = models.FloatField()
-    total_cost = models.FloatField()
-    status = models.CharField(max_length=100, default="Ongoing")
-    proc_offer = models.ForeignKey(ProcurementOfferModel, on_delete=models.CASCADE)
-    # vendor = models.ForeignKey(proposalModel, on_delete=models.PROTECT)
-    
+def payment_attachment_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/reference_number/<filename>
+    return 'payment/{}/{}'.format(instance.vendor_unique_code, filename)
 
-    def __str__(self):
-        return self.proc_offer.product_name
 
 class AcceptedOfferDetailsModel(models.Model):
 
@@ -43,7 +34,11 @@ class AcceptedOfferDetailsModel(models.Model):
     total_cost = models.FloatField()
     status = models.CharField(max_length=100, default="Ongoing")
     proc_offer = models.ForeignKey(ProcurementOfferModel, on_delete=models.CASCADE)
-    vendor = models.ForeignKey(proposalModel, on_delete=models.CASCADE)   
+    vendor = models.ForeignKey(proposalModel, on_delete=models.CASCADE)
+    paid_using = models.CharField(max_length=100, blank=True)
+    paid_amount = models.CharField(max_length=100, blank=True)
+    attachments = models.FileField(upload_to=payment_attachment_path, blank=True)
+    paid_on = models.DateField()
 
     def __str__(self):
         return self.proc_offer.product_name
