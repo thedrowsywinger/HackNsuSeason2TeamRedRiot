@@ -80,7 +80,7 @@
   <div class="col-sm-7">
         <table class="table">
     <thead>
-      
+
       <tr>
         <th scope="col">Product ID</th>
         <th scope="col">Product Name</th>
@@ -91,7 +91,7 @@
         <th scope="col">Status</th>
         <th scope="col">-</th>
       </tr>
-      
+
     </thead>
     <tbody>
       {% for i in proc_offers %}
@@ -105,10 +105,10 @@
         <td>{{i.status}}</td>
         <td>
           <a href="{% url 'procurement_app:particular_product_offers' product_id=i.company_a_proc_id %}">
-          <button>Click Here</button>
+          <button class="btn btn-success">Click Here</button>
           </a>
         </td>
-          
+
       </tr>
       {% endfor %}
     </tbody>
