@@ -45,7 +45,6 @@ def offerView(request):
     })
 
 
-<<<<<<< HEAD
 # def track_offer(request):
 #     code = ProcurementOfferModel.objects.all()
 #     if 'trackerButton' in request.POST:
@@ -53,5 +52,3 @@ def offerView(request):
 #             if(i == request.POST['tracker']):
 #                 return render(request, 'home/home.html')
 #     return render(request, "vendor_app/home.html")
-=======
->>>>>>> master
