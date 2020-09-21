@@ -42,7 +42,10 @@ def offerView(request):
             })
 
 
-
-    return render(request, "vendor_app/procurement_offer.html", {
-    'products' : procurement_list,
-    })
+# def track_offer(request):
+#     code = ProcurementOfferModel.objects.all()
+#     if 'trackerButton' in request.POST:
+#         for i in code.id:
+#             if(i == request.POST['tracker']):
+#                 return render(request, 'home/home.html')
+#     return render(request, "vendor_app/home.html")
