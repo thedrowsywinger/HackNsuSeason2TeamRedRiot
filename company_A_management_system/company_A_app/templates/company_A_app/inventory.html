@@ -51,7 +51,7 @@
       <a class="nav-link active" href="{% url 'company_A_app:inventory' %}">Inventory</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Procurement Offers</a>
+      <a class="nav-link" href="{% url 'procurement_app:create_procurement_offer' %}">Procurement Offers</a>
     </li>
   </ul>
   <!-- Headline ends here -->
@@ -122,14 +122,16 @@
     </tr>
   </thead>
   <tbody>
+    {% for i in products %}
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Tiles</td>
-      <td>500</td>
-      <td>60000</td>
-      <td>120</td>
+      <td>{{i.product_added_by.first_name}} {{i.product_added_by.last_name}}</td>
+      <td>{{i.product_name}}</td>
+      <td>{{i.product_quantity}}</td>
+      <td>{{i.product_unit}}</td>
+      <td>{{i.product_price_per_unit}}</td>
     </tr>
+    {% endfor %}
   </tbody>
 </table>
     </div>

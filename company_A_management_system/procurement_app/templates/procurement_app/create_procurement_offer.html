@@ -45,11 +45,9 @@
 
   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <p class="nav-link active">Dashboard</p>
+      <a class="nav-link active" href="{% url 'company_A_app:dashboard' %}">Dashboard</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Inventory</a>
-    </li>
+
     <li class="nav-item">
       <a class="nav-link active" href="">Procurement Offers</a>
     </li>
@@ -68,9 +66,10 @@
           <select id="inputState" name="product_name" class="form-control">
             <option selected>Choose...</option>
             {% for i in products %}
-            <option>i</option>
+            <option>{{i}}</option>
             {% endfor %}
           </select>
+          <small>If you don't find a product, please add it to your Inventory first</small>
         </div>
         <div class="form-group col-md-6">
           <label for="product_quantity">Product quantity</label>
@@ -87,7 +86,7 @@
           <input type="text" class="form-control" name="product_price_per_unit" value="">
         </div>
       </div>
-      <label for="">Product ID: </label><br>
+      <br>
       <button type="submit" name="offer_submission" class="btn btn-primary">Click to add item for vendors</button>
 
     </form>
@@ -97,24 +96,32 @@
   <div class="col-sm-7">
         <table class="table">
     <thead>
+      
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Product added by</th>
         <th scope="col">Product Name</th>
         <th scope="col">Product Quantity</th>
         <th scope="col">Product Unit</th>
-        <th scope="col">Price/unit</th>
+        <th scope="col">Price/Unit BDT</th>
+        <th scope="col">Issue Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">-</th>
       </tr>
+      
     </thead>
     <tbody>
+      {% for i in proc_offers %}
       <tr>
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Tiles</td>
-        <td>500</td>
-        <td>60000</td>
-        <td>120</td>
+        <td>{{i.product_name}}</td>
+        <td>{{i.product_quantity}}</td>
+        <td>{{i.product_unit}}</td>
+        <td>{{i.product_price_per_unit}}</td>
+        <td>{{i.issue_date}}</td>
+        <td>{{i.status}}</td>
+        <td><button>Click Here</button></td>
       </tr>
+      {% endfor %}
     </tbody>
     </table>
   </div>

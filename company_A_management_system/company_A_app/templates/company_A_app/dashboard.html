@@ -45,13 +45,11 @@
 
   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <p class="nav-link active">Dashboard</p>
+      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Dashboard</a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'company_A_app:inventory' %}">Inventory</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Procurement Offers</a>
+      <a class="nav-link" href="{% url 'procurement_app:create_procurement_offer' %}">Procurement Offers</a>
     </li>
   </ul>
   <!-- Headline ends here -->
@@ -72,7 +70,7 @@
   </div>
 
   <div class="col-sm-8">
-    <!-- <form method="POST">
+    <form method="POST">
       {% csrf_token %}
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -101,9 +99,7 @@
       </div>
       <br>
       <button type="submit" name="adding_product" class="btn btn-primary">Add item</button>
-    </form> -->
-
-    <h3>Dashboard</h3>
+    </form>
   </div>
 
   <div class="col-sm-1"></div>
@@ -124,14 +120,16 @@
     </tr>
   </thead>
   <tbody>
+    {% for i in products %}
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Tiles</td>
-      <td>500</td>
-      <td>60000</td>
-      <td>120</td>
+      <td>{{i.product_added_by.first_name}} {{i.product_added_by.last_name}}</td>
+      <td>{{i.product_name}}</td>
+      <td>{{i.product_quantity}}</td>
+      <td>{{i.product_unit}}</td>
+      <td>{{i.product_price_per_unit}}</td>
     </tr>
+    {% endfor %}
   </tbody>
 </table>
     </div>
@@ -139,18 +137,6 @@
   </div>
 
 </div>
-
-
-<!--
-  <a href="{% url 'home:logout' %}">
-  <button>Click here to Logout</button>
-  </a> -->
-
-
-
-
-
-
 
 
 

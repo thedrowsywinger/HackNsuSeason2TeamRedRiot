@@ -6,18 +6,8 @@ from company_A_app.forms import CompanyAInventoryForm
 
 # Create your views here.
 
+
 def DashboardView(request):
-
-    profile = ProfileModel.objects.get(user=request.user)
-    
-    context = {
-        'profile': profile,
-    }
-
-    return render(request, "company_A_app/dashboard.html", context)
-
-
-def InventoryView(request):
 
     profile = ProfileModel.objects.get(user=request.user)
 
@@ -76,4 +66,11 @@ def InventoryView(request):
                 print(incoming_info.errors)
 
 
-    return render(request, "company_A_app/inventory.html")
+    products = CompanyAInventoryModel.objects.all()
+
+    context = {
+        'products': products
+    }
+
+
+    return render(request, "company_A_app/dashboard.html", context)
