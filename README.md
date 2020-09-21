@@ -53,3 +53,28 @@ Figure 1.0
    <img width="700" height="430" src="images/offerlist.png"><br>
    Figure 3.0
    </p>
+
+   <h4>2.2 Dashboard:</h4>
+   <p>This view contains all the necessary information that the company representative needs to know.
+   </p>
+   <h4>2.2.1 Inventory</h4>
+  <p>The Dashboard contains the company 'A' inventory. Company 'A' representative can check the inventory and add items accordingly to the list
+  </p>
+    <p align="center">
+    <img width="700" height="430" src="images/inventory.png"><br>
+    Figure 4.0
+  </p>
+  <h4>2.2.2 Procurement Offer</h4>
+ <p>This contains a table of the offers received from vendors and products offered for procurement. Any products thats low in inventory can be added via the form here to add it to the procurement list.
+ </p>
+   <p align="center">
+   <img width="700" height="430" src="images/procurementlist.png"><br>
+   Figure 4.0
+ </p>
+ <h4>2.2.3 Proposal list</h4>
+ <p>This contains all the proposals sent by the vendor. Representative can choose to accept the proposals here. This will trigger a acceptance message to the vendor with a unique ID.
+ </p>
+   <p align="center">
+   <img width="700" height="430" src="images/procurementlist.png"><br>
+   Figure 4.0
+ </p>
