@@ -2,13 +2,18 @@ from django.shortcuts import render
 
 from random import randint
 
-from procurement_app.models import ProcurementOfferModel, AcceptedOfferModel
+from procurement_app.models import ProcurementOfferModel, AcceptedOfferModel, AcceptedOfferDetailsModel
 from company_A_app.models import CompanyAInventoryModel
 from vendor_app.models import proposalModel
 
 from procurement_app.forms import ProcurementOfferForm
 
 from django.http import HttpResponse
+
+from django.template.loader import render_to_string
+from django.core.mail import send_mail, EmailMessage
+from django.conf import settings
+
 
 # Create your views here.
 
@@ -23,7 +28,7 @@ def CreateProcurementOfferView(request):
         incoming_data = {
             'product_name': request.POST['product_name'],
             'product_quantity': request.POST['product_quantity'],
-            'product_price_per_unit': request.POST['product_price_per_unit']
+            'product_price_per_unit': request.POST['product_price_per_unit'],
             # 'due_date': request.POST['due_date'],
         }
 
@@ -34,11 +39,15 @@ def CreateProcurementOfferView(request):
         if incoming_info.is_valid():
             print("valid")
 
+            product_id = CompanyAInventoryModel.objects.get(product_name=request.POST['product_name']).company_a_product_id
+
             model = ProcurementOfferModel(
                     product_name = request.POST['product_name'],
                     product_quantity = request.POST['product_quantity'],
                     product_price_per_unit=request.POST['product_price_per_unit'],
+                    product_unit = request.POST['product_unit'],
                     due_date = request.POST['due_date'],
+                    company_a_proc_id=product_id
                 )
             model.save()
 
@@ -90,19 +99,41 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
 
         total_cost = (vendor_offer.vendor_price) * (vendor_offer.vendor_quantity)
 
-        model = AcceptedOfferModel(
+        # model = AcceptedOfferModel(
+        #     due_date = proc_offer.due_date,
+        #     vendor_unique_code = unique_code,
+        #     offered_price_per_unit = vendor_offer.vendor_price,
+        #     offered_quantity = vendor_offer.vendor_quantity,
+        #     total_cost = total_cost,
+        #     proc_offer = proc_offer
+        # )
+        # model.save()
+
+        model = AcceptedOfferDetailsModel(
             due_date = proc_offer.due_date,
             vendor_unique_code = unique_code,
-            offered_price_per_unit = vendor_offer.vendor_price,
-            offered_quantity = vendor_offer.vendor_quantity,
             total_cost = total_cost,
-            proc_offer = proc_offer
+            proc_offer = proc_offer,
+            vendor=vendor_offer,
         )
         model.save()
 
         proc_offer.status = "Accepted"
         proc_offer.vendor_unique_code=unique_code
         proc_offer.save()
+
+        mail_subject = 'Congratulations'
+        message = render_to_string('procurement_app/accepted_offer_email.html', {
+            'uid': unique_code,
+        })
+        to_email = vendor_offer.vendor_email
+        email = EmailMessage(
+                    mail_subject, message, to=[to_email]
+        )
+        print("The email being sent")
+        print("Email will be sent to: ", vendor_offer.vendor_email)
+        print(message)
+        # email.send()
 
     else:
         
@@ -115,13 +146,22 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
 
         total_cost = (vendor_offer.vendor_price) * (vendor_offer.vendor_quantity)
 
-        model = AcceptedOfferModel(
+        # model = AcceptedOfferModel(
+        #     due_date = proc_offer.due_date,
+        #     vendor_unique_code = unique_code,
+        #     offered_price_per_unit = vendor_offer.vendor_price,
+        #     offered_quantity = vendor_offer.vendor_quantity,
+        #     total_cost = total_cost,
+        #     proc_offer = proc_offer
+        # )
+        # model.save()
+
+        model = AcceptedOfferDetailsModel(
             due_date = proc_offer.due_date,
             vendor_unique_code = unique_code,
-            offered_price_per_unit = vendor_offer.vendor_price,
-            offered_quantity = vendor_offer.vendor_quantity,
             total_cost = total_cost,
-            proc_offer = proc_offer
+            proc_offer = proc_offer,
+            vendor=vendor_offer,
         )
         model.save()
 
@@ -129,5 +169,31 @@ def AcceptingVendorOffer(request, proposal_id, product_id):
         proc_offer.vendor_unique_code=unique_code
         proc_offer.save() 
 
+        mail_subject = 'Congratulations'
+        message = render_to_string('procurement_app/accepted_offer_email.html', {
+            'uid': unique_code,
+        })
+        to_email = vendor_offer.vendor_email
+        email = EmailMessage(
+                    mail_subject, message, to=[to_email]
+        )
+        print("The email being sent")
+        print(message)
+        # email.send()
+
+
 
     return HttpResponse("Request Accepted")
+
+
+def ProcurementOrderView(request, vendor_unique_code):
+
+    print("Here: ", vendor_unique_code)
+
+    accepted_offer = AcceptedOfferDetailsModel.objects.get(vendor_unique_code=vendor_unique_code)
+
+    context = {
+        'accepted_offer': accepted_offer
+    }
+
+    return render(request, 'procurement_app/procurement_order.html', context)
