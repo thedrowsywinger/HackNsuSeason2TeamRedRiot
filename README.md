@@ -30,11 +30,26 @@ For dealing with shortage of products from the vendor side, company ‘A’ can 
 <h4>2. Software specification:</h4><hr>
 The application features are described below:
 <h4>2.1 Home page:</h4>
-<p>This page contains both the login and registration forms for the company side. It also contains a link to the procurement offers that will be provided by company 'A'
+<p>This page contains both the login and registration forms for the company side. It also contains a link to the procurement offers that will be provided by company 'A'.
 </p>
-
-
-<ul>
-  <li>Sayeed Md. Shaiban</li>
-  <li>Abdullah Md. Sarwar</li>
-<ul>
+<p align="center">
+<img width="700" height="420" src="images/homepage.png"><br>
+Figure 1.0
+</p>
+<h4>2.1.1 Login:</h4>
+ <p>The login form takes email and password and checks the credentials with the 'USER' entity of the database. It also checks errors via Django's default error form check through 'ModelForm' class
+ </p>
+ <h4>2.1.2 Registration</h4>
+<p>The registration form takes the necessary information like First name, Last name, Email, Role in the company, password. After registering the admin needs to check the role and credentials of the company 'A' employee. If the everything checks out the admin need to mark the status of the account as 'active' for the registered user to gain access (by default this is not activated after registering).
+  </p>
+  <p align="center">
+  <img width="600" height="130" src="images/admin-active status.png"><br>
+  Figure 2.0
+  </p>
+  <h4>2.1.2 Offer List</h4>
+ <p>The offer list contains all the offers provided by the company thats open for all vendors to see. This page also contains the form to send the proposal for the product
+   </p>
+   <p align="center">
+   <img width="700" height="430" src="images/offerlist.png"><br>
+   Figure 3.0
+   </p>
