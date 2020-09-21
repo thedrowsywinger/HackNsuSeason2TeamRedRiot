@@ -1,0 +1,92 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <title>Mangement System</title>
+  </head>
+  <body class="bg-transparant">
+
+
+
+    <!-- Navbar starts here   -->
+    {% include 'navbar.html' %}
+   <!-- navbar ends here -->
+
+<div class="container-fluid">
+  <!-- Headline starts here -->
+
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Dashboard</a>
+    </li>
+  </ul>
+  <!-- Headline ends here -->
+
+  <h3>Vendor Offers for {{procurement_offer.product_name}}</h3>
+
+  <br>
+  <p></p>
+
+  <div class="col-sm-7">
+    <table class="table">
+<thead>
+  
+  <tr>
+    <th scope="col">Vendor Name</th>
+    <th scope="col">Vendor Email</th>
+    <th scope="col">Offered Price</th>
+    <th scope="col">Offered Quantity</th>
+    <th scope="col">Additional Notes</th>
+    <th scope="col">-</th>
+  </tr>
+  
+</thead>
+<tbody>
+  {% for i in vendor_offers %}
+  <tr>
+    <td>{{i.vendor_name}}</td>
+    <td>{{i.vendor_email}}</td>
+    <td>{{i.vendor_price}}</td>
+    <td>{{i.vendor_quantity}}</td>
+    <td>{{i.vendor_info}}</td>
+    <td>
+      <a href="{% url 'procurement_app:accepting_offer' proposal_id=i.proposal_id product_id=i.product_id %}">
+      <button>Accept</button>
+      </a>
+    </td>
+      
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+</div>
+
+
+
+  <!-- Footer -->
+<footer class="page-footer fixed-bottom font-small bg-dark">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-light">© 2020 Copyright:
+      <a href="#"> company A</a>
+    </div>
+    <!-- Copyright -->
+    
+    </footer>
+    
+    </body>
+
+</html>
+    

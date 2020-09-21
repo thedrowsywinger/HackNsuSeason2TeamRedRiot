@@ -13,26 +13,8 @@
   </head>
   <body class="bg-transparant">
 
-
-
     <!-- Navbar starts here   -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-        <a class="navbar-brand" href="#">Company A</a>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registration</a>
-          </li>
-        </ul>
-     </div>
-   </nav>
+    {% include 'navbar.html' %}
    <!-- navbar ends here -->
 
 <div class="container-fluid">
@@ -45,13 +27,11 @@
 
   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <p class="nav-link active">Dashboard</p>
+      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Dashboard</a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'company_A_app:dashboard' %}">Inventory</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'company_A_app:procurement' %}">Procurement Offers</a>
+      <a class="nav-link" href="{% url 'procurement_app:create_procurement_offer' %}">Procurement Offers</a>
     </li>
   </ul>
   <!-- Headline ends here -->
@@ -72,36 +52,31 @@
   </div>
 
   <div class="col-sm-8">
-    <form>
+    <form method="POST">
+      {% csrf_token %}
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label for="inputState">Product Name</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>Tiles</option>
-          </select>
+          <input type="text" class="form-control" name="product_name">
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label for="product_quantity">Product quantity</label>
-          <input type="text" class="form-control" name="" value="">
+          <input type="text" class="form-control" name="product_quantity" value="">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputCity">Product Unit</label>
-          <input type="text" class="form-control" id="inputCity">
+          <input type="text" name="product_unit" class="form-control" id="inputCity">
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <label for="inputState">Product price/unit</label>
-          <input type="text" class="form-control" name="" value="">
+          <input type="text" class="form-control" name="product_price_per_unit" value="">
         </div>
-        <div class="form-group col-md-2">
-          <label for="inputZip">Product added by</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
+
       </div>
-      <label for="">Product ID: </label><br>
-      <button type="submit" class="btn btn-primary">Add item</button>
+      <br>
+      <button type="submit" name="adding_product" class="btn btn-primary">Add item</button>
     </form>
   </div>
 
@@ -114,7 +89,7 @@
       <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Product ID</th>
       <th scope="col">Product added by</th>
       <th scope="col">Product Name</th>
       <th scope="col">Product Quantity</th>
@@ -123,14 +98,16 @@
     </tr>
   </thead>
   <tbody>
+    {% for i in products %}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Tiles</td>
-      <td>500</td>
-      <td>60000</td>
-      <td>120</td>
+      <th scope="row">{{i.company_a_product_id}}</th>
+      <td>{{i.product_added_by.first_name}} {{i.product_added_by.last_name}}</td>
+      <td>{{i.product_name}}</td>
+      <td>{{i.product_quantity}}</td>
+      <td>{{i.product_unit}}</td>
+      <td>{{i.product_price_per_unit}}</td>
     </tr>
+    {% endfor %}
   </tbody>
 </table>
     </div>
@@ -138,18 +115,6 @@
   </div>
 
 </div>
-
-
-<!--
-  <a href="{% url 'home:logout' %}">
-  <button>Click here to Logout</button>
-  </a> -->
-
-
-
-
-
-
 
 
 

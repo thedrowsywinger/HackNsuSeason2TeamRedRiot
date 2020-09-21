@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('Company-A/', include('company_A_app.urls')),
+    path('E-Procurement/', include('procurement_app.urls')),
     path('Vendor/', include('vendor_app.urls')),
 ]
 

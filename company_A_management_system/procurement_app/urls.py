@@ -5,7 +5,9 @@ from django.conf.urls.static import static
 
 from procurement_app.views import (
 
-    CreateProcurementOfferView
+    CreateProcurementOfferView,
+    OffersForAProductView,
+    AcceptingVendorOffer,
 
 )
 
@@ -13,6 +15,8 @@ app_name="procurement_app"
 
 urlpatterns = [
 
-    path('Create-A-Procurement-Offer/', CreateProcurementOfferView, name="create_procurement_offer")
+    path('Create-A-Procurement-Offer/', CreateProcurementOfferView, name="create_procurement_offer"),
+    path('Offers/<str:product_id>', OffersForAProductView, name='particular_product_offers'),
+    path('Accept-Offer/<str:proposal_id>/<str:product_id>/', AcceptingVendorOffer, name='accepting_offer'),
 
 ]
